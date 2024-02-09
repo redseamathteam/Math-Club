@@ -17,139 +17,193 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
-            position: relative;
-        }
-
         /* Header */
         header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px 0;
+            background-color: rgba(240, 240, 240, 0.9);
+            /* Dark white with texture */
+            color: #333;
+            padding: 10px 20px;
+            position: fixed;
+            width: 100%;
+            /* Full width */
+            z-index: 1000;
+            top: 0;
+            transition: background-color 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            /* Header content alignment */
+            align-items: center;
+            /* Center vertically */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            /* Adding a subtle shadow */
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .logo:hover {
+            color: #f1b00f;
         }
 
         nav {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            justify-content: flex-end;
+            /* Align navigation to the right */
+            flex-grow: 1;
+            /* Allow navigation to take up remaining space */
         }
 
-        .logo {
-            font-size: 36px;
-            /* Increased font size */
-            font-weight: bold;
-            color: #fff;
-            padding: 10px;
-            /* Added padding */
-        }
-
-        ul {
+        nav ul {
             list-style: none;
             display: flex;
+            justify-content: flex-end;
+            /* Align list items to the right */
         }
 
-        li {
-            margin-right: 20px;
+        nav ul li {
+            margin-left: 20px;
+            /* Adjust margin to separate list items */
         }
 
-        a {
+        nav ul li:first-child {
+            margin-left: 0;
+            /* Remove margin from the first list item */
+        }
+
+        nav ul li a {
             text-decoration: none;
-            color: #fff;
-            font-weight: 500;
-            transition: color 0.3s ease-in-out;
+            color: #333;
+            transition: color 0.3s ease;
         }
 
-        a:hover {
+        nav ul li a:hover {
             color: #f1b00f;
         }
 
         /* Hero Section */
         .hero-section {
-            height: 80vh;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            background-color: #333;
-            color: #fff;
+            position: relative;
+            overflow: hidden;
+            background-color: #fff;
+            /* White background */
+        }
+
+        .shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            background-color: #ff4d4d;
+            /* Red color */
+            animation: moveShape 20s infinite linear;
+        }
+
+        /* Different shapes */
+        .triangle {
+            width: 50px;
+            height: 50px;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+
+        .square {
+            width: 70px;
+            height: 70px;
+        }
+
+        .rectangle {
+            width: 100px;
+            height: 50px;
+        }
+
+        @keyframes moveShape {
+            0% {
+                transform: translate(-100px, -100px);
+            }
+
+            50% {
+                transform: translate(100px, 100px);
+            }
+
+            100% {
+                transform: translate(-100px, -100px);
+            }
         }
 
         .hero-content {
             max-width: 600px;
+            padding: 20px;
+            z-index: 1;
         }
 
         h1 {
             font-size: 48px;
             margin-bottom: 20px;
             line-height: 1.3;
+            color: #333;
         }
 
         p {
             font-size: 18px;
             margin-bottom: 30px;
             line-height: 1.6;
+            color: #333;
         }
 
         .cta-button {
             display: inline-block;
             padding: 12px 24px;
-            background-color: #fff;
-            border: 2px solid #fff;
-            color: #333;
+            background-color: #333;
+            border: 2px solid #333;
+            color: #fff;
             text-decoration: none;
             font-weight: bold;
             font-size: 16px;
             transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-            cursor: pointer;
+            border-radius: 5px;
         }
 
         .cta-button:hover {
-            background-color: #f1b00f;
-            color: #fff;
-        }
-
-        /* Features Section */
-        .features-section {
-            padding: 40px 0;
-            /* Adjusted padding */
-            background-color: #fff;
-        }
-
-        .feature {
-            text-align: center;
-            margin-bottom: 40px;
-            transition: transform 0.3s ease-in-out;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .feature i {
-            font-size: 36px;
-            margin-bottom: 20px;
-            color: #f1b00f;
-        }
-
-        .feature h3 {
-            font-size: 24px;
-            margin-bottom: 10px;
+            background-color: transparent;
             color: #333;
         }
 
-        .feature p {
-            font-size: 18px;
-            margin-bottom: 10px;
-            color: #555;
+        /* About Section */
+        #about {
+            padding: 100px 0;
+            background-color: #f1c40f;
         }
 
-        .feature:hover {
-            transform: translateY(-10px);
+        #about .about-content {
+            text-align: center;
+        }
+
+        #about h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        #about p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            color: #333;
         }
 
         /* AOS Animation */
@@ -162,29 +216,194 @@
             opacity: 1;
         }
 
-        /* About Section */
-        .about-section {
-            padding: 40px 0;
-            /* Adjusted padding */
-            background-color: #f1b00f;
-            color: #fff;
+
+
+        /* Blog Section */
+
+        /* body {
+            background: #ebecf0;
+            font-family: "Open Sans", sans-serif;
+            min-height: 100vh;
+
+            a {
+                text-decoration: none;
+                color: #172b4d;
+            }
+
+            h1 {
+                font-family: "Song Myung", serif;
+            }
         }
 
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
+        /* DEFAULT STYLE */
+        /* :root {
+            font-size: 16px;
+            --card-img-height: 200px;
         }
 
-        .about-content h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
+        .card-container {
+            margin-top: 20px;
+            /* Added margin-top */
+        /* margin-bottom: 20px; */
+        /* Added margin-bottom */
+        /* width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+            align-items: center;
+            transition: all 200ms ease-in-out;
+        } */
+
+        /* .card {
+            align-self: flex-start;
+            position: relative;
+            width: 325px;
+            min-width: 275px;
+            margin: 1.25rem 0.75rem;
+            background: white;
+            transition: all 300ms ease-in-out;
+
+            .card-img {
+                visibility: hidden;
+                width: 100%;
+                height: var(--card-img-height);
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: cover;
+            }
+
+            .card-img-hovered {
+                --card-img-hovered-overlay: linear-gradient(to bottom,
+                        rgba(0, 0, 0, 0),
+                        rgba(0, 0, 0, 0));
+                transition: all 350ms ease-in-out;
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: cover;
+                width: 100%;
+                position: absolute;
+                height: var(--card-img-height);
+                top: 0;
+            }
+
+            .card-info {
+                position: relative;
+                padding: 0.75rem 1.25rem;
+                transition: all 200ms ease-in-out;
+
+                .card-about {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 0.75rem 0;
+                    transition: all 200ms ease-in-out; */
+        /* 
+                    .card-tag {
+                        width: 60px;
+                        max-width: 100px;
+                        padding: 0.2rem 0.5rem;
+                        font-size: 12px;
+                        text-align: center;
+                        text-transform: uppercase;
+                        letter-spacing: 1px;
+                        background: #505f79;
+                        color: #fff;
+
+                        &.tag-news {
+                            background: #36b37e;
+                        }
+
+                        &.tag-deals {
+                            background: #ffab00;
+                        }
+
+                        &.tag-politics {
+                            width: 71px;
+                            background: #ff5630;
+                        }
+                    }
+                }
+
+                .card-title {
+                    z-index: 10;
+                    font-size: 1.5rem;
+                    padding-bottom: 0.75rem;
+                    transition: all 350ms ease-in-out;
+                }
+
+                .card-creator {
+                    padding-bottom: 0.75rem;
+                    transition: all 250ms ease-in-out;
+                }
+            }
+
+            &:hover {
+                cursor: pointer;
+                box-shadow: 0px 15px 35px rgba(227, 252, 239, 0.1),
+                    0px 5px 15px rgba(0, 0, 0, 0.07);
+                transform: scale(1.025);
+
+                .card-img-hovered {
+                    --card-img-hovered-overlay: linear-gradient(to bottom,
+                            rgba(0, 0, 0, 0),
+                            rgba(0, 0, 0, 0.65));
+                    height: 100%; */
+        /* }
+
+                .card-about,
+                .card-creator {
+                    opacity: 0;
+                }
+
+                .card-info {
+                    background-color: transparent;
+                }
+
+                .card-title {
+                    color: #ebecf0;
+                    // margin-bottom: -40px;
+                    transform: translate(0, 40px);
+                }
+            }
         }
 
-        .about-content p {
-            font-size: 18px;
-            line-height: 1.6;
+        // CARD IMAGES
+        .card-1 {
+
+            .card-img,
+            .card-img-hovered {
+                background-image: var(--card-img-hovered-overlay),
+                    url(https://source.unsplash.com/Qm_n6aoYzDs);
+            }
         }
+
+        .card-2 {
+
+            .card-img,
+            .card-img-hovered {
+                background-image: var(--card-img-hovered-overlay),
+                    url(https://media.istockphoto.com/id/1137773859/vector/cardiogram-heart-red-rhythm-on-monitor-screen.jpg?s=612x612&w=0&k=20&c=w6n2EsRIJE2GAm2fRvaW5m_Ws07VDJizlNt_dVRJvsQ=);
+            }
+        }
+
+        .card-3 {
+
+            .card-img,
+            .card-img-hovered {
+                background-image: var(--card-img-hovered-overlay),
+                    url(https://source.unsplash.com/V0L1LH7qWOQ);
+            }
+        }
+
+        .card-4 {
+
+            .card-img,
+            .card-img-hovered {
+                background-image: var(--card-img-hovered-overlay),
+                    url(https://source.unsplash.com/zAi2Is48-MA);
+            } */
+        /* } */
 
         /* Contact Section */
         .contact-section {
@@ -193,16 +412,23 @@
             background-color: #333;
             color: #fff;
             text-align: center;
+            /* Make the contact section take full width */
+            width: 100%;
         }
 
         .contact-form {
             max-width: 500px;
             margin: 0 auto;
+            /* Make the contact form take full width */
+            width: 100%;
+            padding: 0 20px;
+            /* Add padding for better mobile display */
         }
 
         .contact-form input,
         .contact-form textarea {
-            width: 100%;
+            width: calc(100% - 20px);
+            /* Adjusted width for better spacing */
             padding: 10px;
             margin-bottom: 20px;
             border: 2px solid #f1b00f;
@@ -236,6 +462,8 @@
             margin-top: 40px;
             display: flex;
             justify-content: center;
+            /* Make social icons take full width */
+            width: 100%;
         }
 
         .social-icons li {
@@ -262,6 +490,8 @@
             color: #fff;
             padding: 40px 0;
             text-align: center;
+            /* Make the footer take full width */
+            width: 1000%;
         }
 
         footer p {
@@ -613,26 +843,53 @@
 <body>
     <!-- Header -->
     <header>
-        <div class="container">
-            <nav>
-                <div class="logo">RedSea Math Team</div>
-                <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#team">Team</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
+        <a href="#" class="logo">RedSea Math Team</a>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#Blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
     <!-- Hero Section -->
     <section id="hero" class="hero-section" data-aos="fade-up">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Welcome to the R3S Math Team</h1>
-                <p>Empowering students through mathematics</p>
-                <a href="#about" class="cta-button">Learn More</a>
-            </div>
+        <div class="shapes">
+            <!-- Adding more shapes -->
+            <div class="shape triangle" style="top: 20%; left: 10%;"></div>
+            <div class="shape square" style="top: 40%; left: 30%;"></div>
+            <div class="shape rectangle" style="top: 60%; left: 50%;"></div>
+            <div class="shape square" style="top: 80%; left: 70%;"></div>
+            <div class="shape triangle" style="top: 10%; left: 90%;"></div>
+            <div class="shape rectangle" style="top: 30%; left: 80%;"></div>
+            <div class="shape square" style="top: 50%; left: 70%;"></div>
+            <div class="shape triangle" style="top: 70%; left: 60%;"></div>
+            <div class="shape rectangle" style="top: 90%; left: 50%;"></div>
+            <div class="shape square" style="top: 20%; left: 40%;"></div>
+            <div class="shape triangle" style="top: 40%; left: 30%;"></div>
+            <div class="shape rectangle" style="top: 60%; left: 20%;"></div>
+            <div class="shape square" style="top: 80%; left: 10%;"></div>
+            <div class="shape rectangle" style="top: 10%; left: 80%;"></div>
+            <div class="shape triangle" style="top: 30%; left: 70%;"></div>
+            <div class="shape square" style="top: 50%; left: 60%;"></div>
+            <div class="shape rectangle" style="top: 70%; left: 50%;"></div>
+            <div class="shape triangle" style="top: 90%; left: 40%;"></div>
+            <div class="shape square" style="top: 20%; left: 30%;"></div>
+            <div class="shape rectangle" style="top: 40%; left: 20%;"></div>
+            <div class="shape triangle" style="top: 30%; left: 70%;"></div>
+            <div class="shape square" style="top: 50%; left: 60%;"></div>
+            <div class="shape rectangle" style="top: 70%; left: 50%;"></div>
+            <div class="shape triangle" style="top: 90%; left: 40%;"></div>
+            <div class="shape square" style="top: 20%; left: 30%;"></div>
+            <div class="shape rectangle" style="top: 40%; left: 20%;"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Welcome to the RedSea STEM School Math Team!</h1>
+            <p>Aspiring high school students with a passion for mathematics, we believe everyone can share in this love
+                with the right resources and guidance. That's what we offer—from our peers to our peers!.</p>
+            <a href="#about" class="cta-button">Learn More</a>
         </div>
     </section>
 
@@ -640,7 +897,7 @@
     <section id="about" class="about-section">
         <div class="container">
             <div class="about-content">
-                <h2 data-aos="fade-up">About Us</h2>
+                <h2 class="text-blk team-head-text" data-aos="fade-up">About Us</h2>
                 <p data-aos="fade-up" data-aos-delay="200">We are a dedicated team passionate about making math learning
                     fun and accessible to all students.
                     With our innovative approach and comprehensive study materials, we aim to empower students to excel
@@ -649,245 +906,312 @@
         </div>
     </section>
 
-    <div class="container-block container">
+    <!-- Blog Section -->
+    <br>
+    <br>
+    <div>
         <p class="text-blk team-head-text">
-            Our Team
+            <!-- Our Blog
         </p>
-        <div class="responsive-container-block teamcard-container">
-            <div class="responsive-cell-block wk-desk-3 wk-mobile-12 wk-tab-4 wk-ipadp-4 team-card-container">
-                <div class="team-card">
-                    <div class="team-img-wrapper">
-                        <img class="team-img"
-                            src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/ft12.svg">
-                    </div>
-                    <div class="team-card-content">
-                        <p class="text-blk name">
-                            Roger Lubin
-                        </p>
-                        <p class="text-blk position">
-                            CEO
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="responsive-cell-block wk-desk-3 wk-mobile-12 wk-tab-4 wk-ipadp-4 team-card-container">
-                <div class="team-card">
-                    <div class="team-img-wrapper">
-                        <img class="team-img"
-                            src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/ft13.svg">
-                    </div>
-                    <div class="team-card-content">
-                        <p class="text-blk name">
-                            Roger Lubin
-                        </p>
-                        <p class="text-blk position">
-                            CEO
-                        </p>
+        <section id="Blog" class="Blog-section">
+            <div class="card-container">
+                <div class="card card-1">
+                    <div class="card-img"></div>
+                    <a href="https://www.animations.physics.unsw.edu.au/jw/images/beats_files/beats.gif"
+                        class="card-link">
+                        <div class="card-img-hovered"></div>
+                    </a>
+                    <div class="card-info">
+                        <div class="card-about">
+                            <a class="card-tag tag-news">Trignometry</a>
+                            <div class="card-time">6/11/2018</div>
+                        </div>
+                        <h1 class="card-title">What are Trig functions? </h1>
+                        <div class="card-creator">by <a
+                                href="https:https://www.animations.physics.unsw.edu.au/jw/images/beats_files/beats.gif">Byjus</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="responsive-cell-block wk-desk-3 wk-mobile-12 wk-tab-4 wk-ipadp-4 team-card-container">
-                <div class="team-card">
-                    <div class="team-img-wrapper">
-                        <img class="team-img"
-                            src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/ft14.svg">
-                    </div>
-                    <div class="team-card-content">
-                        <p class="text-blk name">
-                            Roger Lubin
-                        </p>
-                        <p class="text-blk position">
-                            CEO
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="responsive-cell-block wk-desk-3 wk-mobile-12 wk-tab-4 wk-ipadp-4 team-card-container">
-                <div class="team-card">
-                    <div class="team-img-wrapper">
-                        <img class="team-img"
-                            src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/ft12.svg">
-                    </div>
-                    <div class="team-card-content">
-                        <p class="text-blk name">
-                            Roger Lubin
-                        </p>
-                        <p class="text-blk position">
-                            CEO
-                        </p>
+                <div class="card card-2">
+                    <div class="card-img"></div>
+                    <a href="" class="card-link">
+                        <div class="card-img-hovered"></div>
+                    </a>
+                    <div class="card-info">
+                        <div class="card-about">
+                            <a class="card-tag">Tech</a>
+                            <div class="card-time">6/07/2018</div>
+                        </div>
+                        <h1 class="card-title">Samsung laptops is exploding again</h1>
+                        <div class="card-creator">by <a
+                                href="https://www.cuemath.com/trigonometry/trigonometric-functions/">Tyler Platt</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="responsive-cell-block wk-desk-3 wk-mobile-12 wk-tab-4 wk-ipadp-4 team-card-container">
-                <div class="team-card">
-                    <div class="team-img-wrapper">
-                        <img class="team-img"
-                            src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/ft13.svg">
-                    </div>
-                    <div class="team-card-content">
-                        <p class="text-blk name">
-                            Roger Lubin
-                        </p>
-                        <p class="text-blk position">
-                            CEO
-                        </p>
+                <div class="card card-2">
+                    <div class="card-img"></div>
+                    <a href="" class="card-link">
+                        <div class="card-img-hovered"></div>
+                    </a>
+                    <div class="card-info">
+                        <div class="card-about">
+                            <a class="card-tag">Tech</a>
+                            <div class="card-time">6/07/2018</div>
+                        </div>
+                        <h1 class="card-title">Samsung laptops is exploding again</h1>
+                        <div class="card-creator">by <a href="">Tyler Platt</a></div>
                     </div>
                 </div>
-            </div>
-            <div class="responsive-cell-block wk-desk-3 wk-mobile-12 wk-tab-4 wk-ipadp-4 team-card-container">
-                <div class="team-card">
-                    <div class="team-img-wrapper">
-                        <img class="team-img"
-                            src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/ft14.svg">
-                    </div>
-                    <div class="team-card-content">
-                        <p class="text-blk name">
-                            Roger Lubin
-                        </p>
-                        <p class="text-blk position">
-                            CEO
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="responsive-cell-block wk-desk-3 wk-mobile-12 wk-tab-4 wk-ipadp-4 team-card-container">
-                <div class="team-card">
-                    <div class="team-img-wrapper">
-                        <img class="team-img"
-                            src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/ft12.svg">
-                    </div>
-                    <div class="team-card-content">
-                        <p class="text-blk name">
-                            Roger Lubin
-                        </p>
-                        <p class="text-blk position">
-                            CEO
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="responsive-cell-block wk-desk-3 wk-mobile-12 wk-tab-4 wk-ipadp-4 team-card-container">
-                <div class="team-card">
-                    <div class="team-img-wrapper">
-                        <img class="team-img"
-                            src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/ft13.svg">
-                    </div>
-                    <div class="team-card-content">
-                        <p class="text-blk name">
-                            Roger Lubin
-                        </p>
-                        <p class="text-blk position">
-                            CEO
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="responsive-cell-block wk-desk-3 wk-mobile-12 wk-tab-4 wk-ipadp-4 team-card-container">
-                <div class="team-card">
-                    <div class="team-img-wrapper">
-                        <img class="team-img"
-                            src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/ft14.svg">
-                    </div>
-                    <div class="team-card-content">
-                        <p class="text-blk name">
-                            Roger Lubin
-                        </p>
-                        <p class="text-blk position">
-                            CEO
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="responsive-cell-block wk-desk-3 wk-mobile-12 wk-tab-4 wk-ipadp-4 team-card-container">
-                <div class="team-card">
-                    <div class="team-img-wrapper">
-                        <img class="team-img"
-                            src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/ft12.svg">
-                    </div>
-                    <div class="team-card-content">
-                        <p class="text-blk name">
-                            Roger Lubin
-                        </p>
-                        <p class="text-blk position">
-                            CEO
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="responsive-cell-block wk-desk-3 wk-mobile-12 wk-tab-4 wk-ipadp-4 team-card-container">
-                <div class="team-card">
-                    <div class="team-img-wrapper">
-                        <img class="team-img"
-                            src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/ft13.svg">
-                    </div>
-                    <div class="team-card-content">
-                        <p class="text-blk name">
-                            Roger Lubin
-                        </p>
-                        <p class="text-blk position">
-                            CEO
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="responsive-cell-block wk-desk-3 wk-mobile-12 wk-tab-4 wk-ipadp-4 team-card-container">
-                <div class="team-card">
-                    <div class="team-img-wrapper">
-                        <img class="team-img"
-                            src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/ft14.svg">
-                    </div>
-                    <div class="team-card-content">
-                        <p class="text-blk name">
-                            Roger Lubin
-                        </p>
-                        <p class="text-blk position">
-                            CEO
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <h2 data-aos="fade-up">Contact Us</h2>
-            <div class="contact-form" data-aos="fade-up" data-aos-delay="200">
-                <form action="#" method="POST">
-                    <input type="text" name="name" placeholder="Your Name">
-                    <input type="email" name="email" placeholder="Your Email">
-                    <textarea name="message" placeholder="Your Message"></textarea>
-                    <input type="submit" value="Send Message">
-                </form>
+                <div class="card card-2">
+                    <div class="card-img"></div>
+                    <a href="" class="card-link">
+                        <div class="card-img-hovered"></div>
+                    </a>
+                    <div class="card-info">
+                        <div class="card-about">
+                            <a class="card-tag">Tech</a>
+                            <div class="card-time">6/07/2018</div>
+                        </div>
+                        <h1 class="card-title">Samsung laptops is exploding again</h1>
+                        <div class="card-creator">by <a href="">Tyler Platt</a></div>
+                    </div>
+                </div>
+
+                <div class="card card-3">
+                    <div class="card-img"></div>
+                    <a href="" class="card-link">
+                        <div class="card-img-hovered"></div>
+                    </a>
+                    <div class="card-info">
+                        <div class="card-about">
+                            <a class="card-tag tag-deals">Deals</a>
+                            <div class="card-time">5/27/2018</div>
+                        </div>
+                        <h1 class="card-title">Apple is having big Sale for the first time</h1>
+                        <div class="card-creator">by <a href="">Timur Mirzoyev</a></div>
+                    </div>
+                </div>
+                <div class="card card-4">
+                    <div class="card-img"></div>
+                    <a href="" class="card-link">
+                        <div class="card-img-hovered"></div>
+                    </a>
+                    <div class="card-info">
+                        <div class="card-about">
+                            <a class="card-tag tag-politics">Politics</a>
+                            <div class="card-time">5/20/2018</div>
+                        </div>
+                        <h1 class="card-title">Net-Nutrality is coming to its end</h1>
+                        <div class="card-creator">by <a href="">Gregoy Trem</a></div>
+                    </div>
+                </div>
             </div>
-            <ul class="social-icons">
-                <li><a href="https://www.facebook.com/profile.php?id=61556125447510&mibextid=ZbWKwL"><i
-                            class="fab fa-facebook-f"></i></a></li>
-                <li><a href="https://www.linkedin.com/company/red-sea-math-team"><i class="fab fa-linkedin-in"></i></a></li>
-                <li><a href="https://drive.google.com/drive/folders/1dMNk1zsYaI3calWaGNfdtavGVoE4Y-jL?usp=sharing"><i
-                            class="fab fa-google-drive"></i></a></li>
-            </ul>
-        </div>
-    </section>
+            <!-- Team Section -->
 
-    <!-- Footer Section -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 School Math Team</p>
-            <p>All rights reserved.</p>
-            <p>Designed by Amr Khaled</p>
-        </div>
-    </footer>
+        <div class="container-block container">
+            <section id="team" class="team-section">
+                <p class="text-blk team-head-text">
+                    Our Team
+                </p>
+                <div class="responsive-container-block teamcard-container">
+                    <div class="responsive-cell-block wk-desk-3 wk-mobile-12 wk-tab-4 wk-ipadp-4 team-card-container">
+                        <div class="team-card">
+                            <div class="team-img-wrapper">
+                                <img class="team-img" src="Amr Khaled.jpeg">
+                            </div>
+                            <div class="team-card-content">
+                                <p class="text-blk name">
+                                    Amr Khaled
+                                </p>
+                                <p class="text-blk position">
+                                    Head of the team
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="responsive-cell-block wk-desk-3 wk-mobile-12 wk-tab-4 wk-ipadp-4 team-card-container">
+                        <div class="team-card">
+                            <div class="team-img-wrapper">
+                                <img class="team-img" src="Emmy Beshoy.jpeg">
+                            </div>
+                            <div class="team-card-content">
+                                <p class="text-blk name">
+                                    Emmy Beshoy
+                                </p>
+                                <p class="text-blk position">
+                                    Head of Graphic Design
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="responsive-cell-block wk-desk-3 wk-mobile-12 wk-tab-4 wk-ipadp-4 team-card-container">
+                        <div class="team-card">
+                            <div class="team-img-wrapper">
+                                <img class="team-img" src="Geogre Bassem.jpeg">
+                            </div>
+                            <div class="team-card-content">
+                                <p class="text-blk name">
+                                    Geogre Bassem
+                                </p>
+                                <p class="text-blk position">
+                                    Vice Head of the team
+                                </p>
+                            </div>
+                        </div>
+                    </div>
 
-    <!-- External Libraries -->
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            AOS.init();
-        });
+                    <div class="responsive-container-block teamcard-container">
+                        <div
+                            class="responsive-cell-block wk-desk-3 wk-mobile-12 wk-tab-4 wk-ipadp-4 team-card-container">
+                            <div class="team-card">
+                                <div class="team-img-wrapper">
+                                    <img class="team-img" src="Doha Elsaid.jpeg">
+                                </div>
+                                <div class="team-card-content">
+                                    <p class="text-blk name">
+                                        Doha Elsaid
+                                    </p>
+                                    <p class="text-blk position">
+                                        Vice Head of the team
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="responsive-cell-block wk-desk-3 wk-mobile-12 wk-tab-4 wk-ipadp-4 team-card-container">
+                            <div class="team-card">
+                                <div class="team-img-wrapper">
+                                    <img class="team-img" src="Merit Nashaat.jpeg">
+                                </div>
+                                <div class="team-card-content">
+                                    <p class="text-blk name">
+                                        Merit Nashaat
+                                    </p>
+                                    <p class="text-blk position">
+                                        Head of Marketing
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="responsive-cell-block wk-desk-3 wk-mobile-12 wk-tab-4 wk-ipadp-4 team-card-container">
+                            <div class="team-card">
+                                <div class="team-img-wrapper">
+                                    <img class="team-img" src="Rahma Ahmed.jpeg">
+                                </div>
+                                <div class="team-card-content">
+                                    <p class="text-blk name">
+                                        Rahma Ahmed
+                                    </p>
+                                    <p class="text-blk position">
+                                        Vice Head of Content Writing
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="responsive-cell-block wk-desk-3 wk-mobile-12 wk-tab-4 wk-ipadp-4 team-card-container">
+                            <div class="team-card">
+                                <div class="team-img-wrapper">
+                                    <img class="team-img" src="Raawan Mohamed.jpeg">
+                                </div>
+                                <div class="team-card-content">
+                                    <p class="text-blk name">
+                                        Rawan Mohammed
+                                    </p>
+                                    <p class="text-blk position">
+                                        Head of Content Wtriting
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="responsive-cell-block wk-desk-3 wk-mobile-12 wk-tab-4 wk-ipadp-4 team-card-container">
+                            <div class="team-card">
+                                <div class="team-img-wrapper">
+                                    <img class="team-img" src="Sara Gamal.jpeg">
+                                </div>
+                                <div class="team-card-content">
+                                    <p class="text-blk name">
+                                        Sara Gamal
+                                    </p>
+                                    <p class="text-blk position">
+                                        Vice Head of Content Writing
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="responsive-cell-block wk-desk-3 wk-mobile-12 wk-tab-4 wk-ipadp-4 team-card-container">
+                            <div class="team-card">
+                                <div class="team-img-wrapper">
+                                    <img class="team-img" src="Shahenda Ahmed.jpeg">
+                                </div>
+                                <div class="team-card-content">
+                                    <p class="text-blk name">
+                                        Shahenda Ahmed
+                                    </p>
+                                    <p class="text-blk position">
+                                        Vice Head of Academics
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
 
-    </script>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+
+                    <!-- Contact Section -->
+                    <section id="contact" class="contact-section">
+                        <div class="container">
+                            <h2 data-aos="fade-up">Contact Us</h2>
+                            <div class="contact-form" data-aos="fade-up" data-aos-delay="200">
+                                <form action="#" method="POST">
+                                    <input type="text" name="name" placeholder="Your Name">
+                                    <input type="email" name="email" placeholder="Your Email">
+                                    <textarea name="message" placeholder="Your Message"></textarea>
+                                    <input type="submit" value="Send Message">
+                                </form>
+                            </div>
+                            <ul class="social-icons">
+                                <li><a href="https://www.facebook.com/profile.php?id=61556125447510&mibextid=ZbWKwL"><i
+                                            class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="www.linkedin.com/in/redsea-math-team-337a422b2"><i
+                                            class="fab fa-linkedin-in"></i></a>
+                                </li>
+                                <li><a
+                                        href="https://drive.google.com/drive/folders/1dMNk1zsYaI3calWaGNfdtavGVoE4Y-jL?usp=sharing"><i
+                                            class="fab fa-google-drive"></i></a></li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <!-- Footer Section -->
+                    <footer>
+                        <div class="container">
+                            <p>&copy; 2024 School Math Team</p>
+                            <p>All rights reserved.</p>
+                            <p>Designed by Amr Khaled</p>
+                        </div>
+                    </footer>
+
+                    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+                    <script>
+                        AOS.init();
+                    </script>
+
+                    </script>
+                    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function () {
+                            AOS.init();
+                        });
+
+                    </script>
 </body>
 
 </html>
